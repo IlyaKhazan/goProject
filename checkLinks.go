@@ -19,6 +19,7 @@ func CheckLinks(str string) string {
 	asterisk := []byte("*")[0]
 	space := []byte(" ")[0]
 	pointer := 0
+
 	for i := range url {
 		if pointer == len(values)-1 {
 			if url[i] == space {
