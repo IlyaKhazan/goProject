@@ -1,25 +1,24 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Please provide a string argument.")
-		return
-	}
-	fmt.Println(CheckLinks(os.Args[1]))
+	//go run main.go "Hello, its my page: http://localhost123.com See you"
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	fmt.Println(CheckLinks(input))
 }
 
 func CheckLinks(str string) string {
 	url := []byte(str)
-	values := []byte("https://")
+	values := []byte("http://")
 	asterisk := []byte("*")[0]
 	space := []byte(" ")[0]
 	pointer := 0
-
 	for i := range url {
 		if pointer == len(values)-1 {
 			if url[i] == space {
